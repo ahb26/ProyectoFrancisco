@@ -1,0 +1,421 @@
+<div class="tema">
+  <input class="tema__interruptor" type="checkbox" id="tema-toggle" aria-label="Activar modo oscuro" />
+
+  <div class="tema__aplicacion sitio" id="top" (document:keydown.escape)="alPulsarEscape()">
+    <div class="sitio__barra-superior">
+      <header class="sitio__cabecera">
+        <div class="sitio__cabecera-interior">
+          <a class="sitio__logo" href="#top" aria-label="Inicio">
+            <img class="sitio__logo-imagen" src="/images/JoyLine_JL.ico?v=20260304" alt="JoyLine" />
+          </a>
+
+          <form class="sitio__buscador" role="search" (submit)="alEnviarBusqueda($event, consultaBusqueda())">
+            <input
+              class="sitio__buscador-entrada"
+              type="search"
+              name="q"
+              inputmode="search"
+              placeholder="Buscar productos de deporte"
+              aria-label="Buscar productos"
+              [value]="consultaBusqueda()"
+              (input)="alEscribirBusqueda($any($event.target).value)"
+              (focus)="alFocoBusqueda()"
+            />
+          </form>
+
+          <div class="sitio__acciones-cabecera" aria-label="Acciones">
+            <label class="sitio__interruptor-tema" for="tema-toggle" aria-label="Cambiar tema">
+              <svg class="sitio__icono-tema sitio__icono-tema--sol" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                <path
+                  d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <svg class="sitio__icono-tema sitio__icono-tema--luna" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  d="M21 14.5A8.5 8.5 0 0 1 9.5 3a7 7 0 1 0 11.5 11.5Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </label>
+
+            <button class="sitio__boton-icono" type="button" aria-label="Contacto" (click)="abrirContacto()">
+              <svg class="sitio__icono" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="10" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="2" />
+                <path
+                  d="M4.5 19c1.2-3.6 4-5.5 8-5.5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M16 10.2c1.7 0 3 1 3 2.5 0 1.1-.7 1.8-1.6 2.3-.8.5-1.4 1-1.4 2"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path d="M16 18.5v.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </button>
+
+            <button
+              class="sitio__boton-icono sitio__boton-icono--primario sitio__boton-carrito"
+              type="button"
+              [attr.aria-label]="unidadesCarrito() ? 'Carrito, ' + unidadesCarrito() + ' artículo(s)' : 'Carrito'"
+              aria-controls="cajon-carrito"
+              [attr.aria-expanded]="carritoAbierto()"
+              (click)="alternarCarrito()"
+            >
+              <span class="sitio__badge-carrito" *ngIf="unidadesCarrito()" aria-hidden="true">
+                {{ unidadesCarrito() }}
+              </span>
+              <svg class="sitio__icono" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  d="M6 6h15l-2 8H8L6 6Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M6 6 5 3H2"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <circle cx="9" cy="19" r="1.5" fill="none" stroke="currentColor" stroke-width="2" />
+                <circle cx="18" cy="19" r="1.5" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <nav class="sitio__navegacion" aria-label="Navegación principal">
+        <div class="sitio__nav-interior">
+          <a class="sitio__enlace-nav sitio__enlace-nav--activo" href="#deporte">Deporte</a>
+          <a class="sitio__enlace-nav" href="#mujer">Mujer</a>
+          <a class="sitio__enlace-nav" href="#hombre">Hombre</a>
+          <a class="sitio__enlace-nav" href="#ninos">Niños</a>
+          <a class="sitio__enlace-nav" href="#descuento">Descuento</a>
+        </div>
+      </nav>
+    </div>
+
+    <main class="sitio__principal">
+      <div class="sitio__principal-interior">
+        <section class="panel-portada" aria-label="Inicio">
+          <div class="panel-portada__rejilla">
+            <div class="tarjeta-portada">
+              <img class="tarjeta-portada__imagen" src="/images/running.jpg" loading="lazy" />
+              <span class="tarjeta-portada__etiqueta">Running</span>
+            </div>
+
+            <div class="tarjeta-portada">
+              <img class="tarjeta-portada__imagen" src="/images/fitness.jpg" loading="lazy" />
+              <span class="tarjeta-portada__etiqueta">Fitness</span>
+            </div>
+
+            <div class="tarjeta-portada">
+              <img class="tarjeta-portada__imagen" src="/images/alairelibre.jpg" loading="lazy" />
+              <span class="tarjeta-portada__etiqueta">Al aire libre</span>
+            </div>
+
+            <div class="tarjeta-portada">
+              <img class="tarjeta-portada__imagen" src="/images/juegosdeequipo.jpg" loading="lazy" />
+              <span class="tarjeta-portada__etiqueta">Deportes en equipo</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="seccion" id="deporte" aria-labelledby="deporte-title">
+          <h2 class="seccion__titulo" id="deporte-title">Deporte</h2>
+          <p class="seccion__texto">Productos y equipación para entrenar y competir.</p>
+
+          <div class="rejilla-productos" aria-label="Productos de Deporte">
+            <app-tarjeta-producto
+              *ngFor="let producto of productosDeporte; trackBy: identificarProducto"
+              [producto]="producto"
+              (abrir)="abrirProducto($event)"
+              (anadir)="anadirAlCarrito($event)"
+            />
+          </div>
+        </section>
+
+        <section class="seccion" id="mujer" aria-labelledby="mujer-title">
+          <h2 class="seccion__titulo" id="mujer-title">Mujer</h2>
+          <p class="seccion__texto">Ropa y calzado deportivo para mujer.</p>
+
+          <div class="rejilla-productos" aria-label="Productos de Mujer">
+            <app-tarjeta-producto
+              *ngFor="let producto of productosMujer; trackBy: identificarProducto"
+              [producto]="producto"
+              (abrir)="abrirProducto($event)"
+              (anadir)="anadirAlCarrito($event)"
+            />
+          </div>
+        </section>
+
+        <section class="seccion" id="hombre" aria-labelledby="hombre-title">
+          <h2 class="seccion__titulo" id="hombre-title">Hombre</h2>
+          <p class="seccion__texto">Ropa y calzado deportivo para hombre.</p>
+
+          <div class="rejilla-productos" aria-label="Productos de Hombre">
+            <app-tarjeta-producto
+              *ngFor="let producto of productosHombre; trackBy: identificarProducto"
+              [producto]="producto"
+              (abrir)="abrirProducto($event)"
+              (anadir)="anadirAlCarrito($event)"
+            />
+          </div>
+        </section>
+
+        <section class="seccion" id="ninos" aria-labelledby="ninos-title">
+          <h2 class="seccion__titulo" id="ninos-title">Niños</h2>
+          <p class="seccion__texto">Equipación y básicos deportivos para peques.</p>
+
+          <div class="rejilla-productos" aria-label="Productos de Niños">
+            <app-tarjeta-producto
+              *ngFor="let producto of productosNinos; trackBy: identificarProducto"
+              [producto]="producto"
+              (abrir)="abrirProducto($event)"
+              (anadir)="anadirAlCarrito($event)"
+            />
+          </div>
+        </section>
+
+        <section class="seccion" id="descuento" aria-labelledby="descuento-title">
+          <h2 class="seccion__titulo" id="descuento-title">Descuento</h2>
+          <p class="seccion__texto">Ofertas y últimas unidades.</p>
+
+          <div class="rejilla-productos" aria-label="Productos en Descuento">
+            <app-tarjeta-producto
+              *ngFor="let producto of productosDescuento; trackBy: identificarProducto"
+              [producto]="producto"
+              (abrir)="abrirProducto($event)"
+              (anadir)="anadirAlCarrito($event)"
+            />
+          </div>
+        </section>
+
+        <router-outlet />
+      </div>
+    </main>
+
+    <footer class="sitio__pie">
+      <div class="sitio__pie-interior">
+        <small>© {{ titulo() }} — 2026</small>
+        <button class="sitio__enlace-pie" type="button" (click)="abrirContacto()">Contáctanos</button>
+      </div>
+    </footer>
+
+    <div class="notificacion" [class.notificacion--mostrar]="notificacionVisible()" role="status" aria-live="polite" aria-atomic="true">
+      {{ mensajeNotificacion() }}
+    </div>
+
+    <div class="modal-busqueda" [class.modal-busqueda--abierto]="busquedaAbierta()">
+      <div class="modal-busqueda__fondo" (click)="cerrarBusqueda()" aria-hidden="true"></div>
+
+      <section class="modal-busqueda__panel" role="dialog" aria-modal="true" aria-label="Resultados de búsqueda">
+        <header class="modal-busqueda__cabecera">
+          <div class="modal-busqueda__encabezado">
+            <h2 class="modal-busqueda__titulo">Resultados</h2>
+            <p class="modal-busqueda__subtitulo" *ngIf="consultaBusqueda()">
+              Para “{{ consultaBusqueda() }}” — {{ resultadosBusqueda().length }} producto(s)
+            </p>
+          </div>
+          <button class="modal-busqueda__cerrar" type="button" (click)="cerrarBusqueda()" aria-label="Cerrar">
+            <svg class="modal-busqueda__icono-cerrar" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                d="M6 6 18 18M18 6 6 18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </header>
+
+        <div class="modal-busqueda__contenido">
+          <p class="modal-busqueda__vacio" *ngIf="!consultaBusqueda()">Escribe en la barra de arriba para ver resultados.</p>
+
+          <p class="modal-busqueda__vacio" *ngIf="consultaBusqueda() && !resultadosBusqueda().length">
+            No hay resultados para “{{ consultaBusqueda() }}”.
+          </p>
+
+          <div class="rejilla-productos" *ngIf="resultadosBusqueda().length" aria-label="Resultados">
+            <app-tarjeta-producto
+              *ngFor="let producto of resultadosBusqueda(); trackBy: identificarProducto"
+              [producto]="producto"
+              (abrir)="abrirProducto($event)"
+              (anadir)="anadirAlCarrito($event)"
+            />
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="modal-contacto" [class.modal-contacto--abierto]="contactoAbierto()">
+      <div class="modal-contacto__fondo" (click)="cerrarContacto()" aria-hidden="true"></div>
+
+      <section class="modal-contacto__panel" role="dialog" aria-modal="true" aria-label="Contáctanos">
+        <header class="modal-contacto__cabecera">
+          <h2 class="modal-contacto__titulo">Contáctanos</h2>
+          <button class="modal-contacto__cerrar" type="button" (click)="cerrarContacto()" aria-label="Cerrar">
+            <svg class="modal-contacto__icono-cerrar" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                d="M6 6 18 18M18 6 6 18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </header>
+
+        <div class="modal-contacto__contenido">
+          <p>
+            Somos una pequeña tienda situada en Madrid, cualquier duda contáctanos al correo
+            <a class="modal-contacto__enlace" href="mailto:JoyLine@gmail.com">JoyLine@gmail.com</a>
+            o al teléfono
+            <a class="modal-contacto__enlace" href="tel:611414141">611414141</a>
+            y atenderemos a tus preguntas.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <div class="cajon-carrito" [class.cajon-carrito--abierto]="carritoAbierto()">
+      <div class="cajon-carrito__fondo" (click)="cerrarCarrito()" aria-hidden="true"></div>
+
+      <aside class="cajon-carrito__panel" id="cajon-carrito" role="dialog" aria-modal="true" aria-label="Carrito">
+        <header class="cajon-carrito__cabecera">
+          <h2 class="cajon-carrito__titulo">Carrito</h2>
+          <button class="cajon-carrito__cerrar" type="button" (click)="cerrarCarrito()" aria-label="Cerrar carrito">
+            <svg class="cajon-carrito__icono-cerrar" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                d="M6 6 18 18M18 6 6 18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </header>
+
+        <div class="cajon-carrito__contenido">
+          <ng-container *ngIf="itemsCarrito().length; else emptyCart">
+            <ul class="cajon-carrito__lista" aria-label="Productos del carrito">
+              <li class="item-carrito" *ngFor="let itemCarrito of itemsCarrito(); trackBy: identificarItemCarrito">
+                <div class="item-carrito__media" aria-hidden="true">
+                  <img class="item-carrito__img" [src]="itemCarrito.urlImagen" alt="" loading="lazy" />
+                </div>
+                <div class="item-carrito__info">
+                  <p class="item-carrito__nombre">{{ itemCarrito.nombre }}</p>
+                  <p class="item-carrito__precio">{{ itemCarrito.precio | currency: 'EUR' : 'symbol' : '1.2-2' }}</p>
+
+                  <div class="item-carrito__cantidad" aria-label="Cantidad">
+                    <button class="item-carrito__btn-cantidad" type="button" (click)="disminuirCantidad(itemCarrito.id)" aria-label="Quitar una unidad">−</button>
+                    <span class="item-carrito__valor-cantidad" aria-label="Unidades">{{ itemCarrito.cantidad }}</span>
+                    <button class="item-carrito__btn-cantidad" type="button" (click)="aumentarCantidad(itemCarrito.id)" aria-label="Añadir una unidad">+</button>
+
+                    <button class="item-carrito__eliminar" type="button" (click)="eliminarItem(itemCarrito.id)" aria-label="Eliminar producto">Eliminar</button>
+                  </div>
+                </div>
+
+                <p class="item-carrito__total-linea" aria-label="Total línea">
+                  {{ itemCarrito.precio * itemCarrito.cantidad | currency: 'EUR' : 'symbol' : '1.2-2' }}
+                </p>
+              </li>
+            </ul>
+
+            <div class="cajon-carrito__resumen" aria-label="Resumen">
+              <div class="cajon-carrito__fila">
+                <span>Subtotal</span>
+                <strong>{{ subtotalCarrito() | currency: 'EUR' : 'symbol' : '1.2-2' }}</strong>
+              </div>
+              <div class="cajon-carrito__fila cajon-carrito__fila--muted">
+                <span>Envío</span>
+                <span>Calculado en el pago</span>
+              </div>
+              <div class="cajon-carrito__fila cajon-carrito__fila--total">
+                <span>Total</span>
+                <strong>{{ totalCarrito() | currency: 'EUR' : 'symbol' : '1.2-2' }}</strong>
+              </div>
+
+              <button class="cajon-carrito__cta" type="button">Ir a pagar</button>
+              <button class="cajon-carrito__secundario" type="button" (click)="vaciarCarrito()">Vaciar carrito</button>
+            </div>
+          </ng-container>
+
+          <ng-template #emptyCart>
+            <div class="cajon-carrito__vacio">
+              <p class="cajon-carrito__vacio-titulo">Tu carrito está vacío</p>
+              <p class="cajon-carrito__vacio-texto">Explora productos y añade tus favoritos.</p>
+              <button class="cajon-carrito__cta" type="button" (click)="cerrarCarrito()">Seguir comprando</button>
+            </div>
+          </ng-template>
+        </div>
+      </aside>
+    </div>
+
+    <div class="cajon-producto" [class.cajon-producto--abierto]="detalleProductoAbierto()">
+      <div class="cajon-producto__fondo" (click)="cerrarProducto()" aria-hidden="true"></div>
+
+      <aside class="cajon-producto__panel" id="cajon-producto" role="dialog" aria-modal="true" aria-label="Detalle de producto">
+        <header class="cajon-producto__cabecera">
+          <h2 class="cajon-producto__titulo">{{ productoSeleccionado()?.nombre || 'Producto' }}</h2>
+          <button class="cajon-producto__cerrar" type="button" (click)="cerrarProducto()" aria-label="Cerrar detalle">
+            <svg class="cajon-producto__icono-cerrar" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                d="M6 6 18 18M18 6 6 18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </header>
+
+        <div class="cajon-producto__contenido" *ngIf="productoSeleccionado() as producto">
+          <div class="cajon-producto__media">
+            <img class="cajon-producto__img" [src]="producto.urlImagen" [alt]="producto.nombre" />
+          </div>
+
+          <p class="cajon-producto__descripcion">{{ producto.descripcionCorta }}</p>
+
+          <ul class="cajon-producto__detalles" aria-label="Detalles">
+            <li class="cajon-producto__detalle" *ngFor="let d of producto.detalles">{{ d }}</li>
+          </ul>
+
+          <div class="cajon-producto__resumen" aria-label="Comprar">
+            <div class="cajon-producto__precio">
+              <span class="cajon-producto__precio-actual">{{ producto.precio | currency: 'EUR' : 'symbol' : '1.2-2' }}</span>
+              <span class="cajon-producto__precio-anterior" *ngIf="producto.precioOriginal">{{ producto.precioOriginal | currency: 'EUR' : 'symbol' : '1.2-2' }}</span>
+            </div>
+
+            <button class="cajon-producto__cta" type="button" (click)="anadirAlCarrito(producto)">Añadir al carrito</button>
+            <button class="cajon-producto__secundario" type="button" (click)="cerrarProducto(); alternarCarrito()">Ver carrito</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>

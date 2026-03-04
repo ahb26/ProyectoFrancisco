@@ -1,0 +1,37 @@
+<article
+  class="tarjeta-producto"
+  role="button"
+  tabindex="0"
+  (click)="alAbrir()"
+  (keydown.enter)="alAbrir()"
+  (keydown.space)="$event.preventDefault(); alAbrir()"
+  [attr.aria-label]="'Ver detalle de ' + producto.nombre"
+>
+  <div class="tarjeta-producto__imagen" aria-hidden="true">
+    <img class="tarjeta-producto__img" [src]="producto.urlImagen" [alt]="producto.nombre" loading="lazy" />
+  </div>
+  <div class="tarjeta-producto__contenido">
+    <h3 class="tarjeta-producto__titulo">{{ producto.nombre }}</h3>
+    <p class="tarjeta-producto__descripcion">{{ producto.descripcionCorta }}</p>
+
+    <div class="tarjeta-producto__inferior">
+      <div class="tarjeta-producto__precio" aria-label="Precio">
+        <span class="tarjeta-producto__precio-actual">
+          {{ producto.precio | currency: 'EUR' : 'symbol' : '1.2-2' }}
+        </span>
+        <span class="tarjeta-producto__precio-anterior" *ngIf="producto.precioOriginal">
+          {{ producto.precioOriginal | currency: 'EUR' : 'symbol' : '1.2-2' }}
+        </span>
+      </div>
+
+      <button
+        class="tarjeta-producto__anadir"
+        type="button"
+        (click)="alAnadir($event)"
+        aria-label="Añadir al carrito"
+      >
+        Añadir
+      </button>
+    </div>
+  </div>
+</article>

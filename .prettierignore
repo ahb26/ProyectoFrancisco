@@ -1,0 +1,4 @@
+# Files that Prettier cannot parse by default
+.editorconfig
+.gitignore
+public/favicon.ico
