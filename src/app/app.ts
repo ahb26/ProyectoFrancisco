@@ -54,7 +54,7 @@ export class App {
       nombre: 'Zapatillas running',
       descripcionCorta: 'Amortiguación cómoda para salir a correr.',
       precio: 79.99,
-      urlImagen: '/images/zapatilla1.jpg',
+      urlImagen: 'images/zapatilla1.jpg',
       detalles: ['Suela con buen agarre', 'Tejido transpirable', 'Uso: asfalto y pista'],
     },
     {
@@ -63,7 +63,7 @@ export class App {
       nombre: 'Balón de fútbol',
       descripcionCorta: 'Tacto suave y buena durabilidad.',
       precio: 19.99,
-      urlImagen: '/images/pelota.jpg',
+      urlImagen: 'images/pelota.jpg',
       detalles: ['Tamaño 5', 'Cubierta resistente', 'Apto para césped artificial'],
     },
     {
@@ -72,7 +72,7 @@ export class App {
       nombre: 'Mancuernas (par)',
       descripcionCorta: 'Entrena fuerza en casa sin complicaciones.',
       precio: 24.99,
-      urlImagen: '/images/mancuernas.jpg',
+      urlImagen: 'images/mancuernas.jpg',
       detalles: ['Agarre cómodo', 'Antirrodadura', 'Ideal para rutinas full body'],
     },
   ];
@@ -84,7 +84,7 @@ export class App {
       nombre: 'Leggings training',
       descripcionCorta: 'Ajuste cómodo para entrenar y moverte.',
       precio: 29.99,
-      urlImagen: '/images/legins.jpg',
+      urlImagen: 'images/legins.jpg',
       detalles: ['Cintura alta', 'Tejido elástico', 'Bolsillo lateral'],
     },
     {
@@ -93,7 +93,7 @@ export class App {
       nombre: 'Chaqueta ligera',
       descripcionCorta: 'Perfecta para entretiempo y salidas.',
       precio: 44.99,
-      urlImagen: '/images/chaquetamujer.jpg',
+      urlImagen: 'images/chaquetamujer.jpg',
       detalles: ['Corta-viento', 'Bolsillos con cierre', 'Secado rápido'],
     },
   ];
@@ -105,7 +105,7 @@ export class App {
       nombre: 'Chaqueta deportiva',
       descripcionCorta: 'Capa extra para entrenar al aire libre.',
       precio: 49.99,
-      urlImagen: '/images/chaquetahombre.jpg',
+      urlImagen: 'images/chaquetahombre.jpg',
       detalles: ['Corta-viento', 'Ligera', 'Capucha ajustable'],
     },
     {
@@ -114,7 +114,7 @@ export class App {
       nombre: 'Zapatillas multiuso',
       descripcionCorta: 'Para gimnasio y caminatas diarias.',
       precio: 59.99,
-      urlImagen: '/images/zapatilla.jpg',
+      urlImagen: 'images/zapatilla.jpg',
       detalles: ['Plantilla cómoda', 'Refuerzos laterales', 'Uso: indoor/outdoor'],
     },
   ];
@@ -126,7 +126,7 @@ export class App {
       nombre: 'Pack básico kids',
       descripcionCorta: 'Comodidad para el cole y el deporte.',
       precio: 24.99,
-      urlImagen: '/images/pack1.jpg',
+      urlImagen: 'images/pack1.jpg',
       detalles: ['Tejido suave', 'Fácil de lavar', 'Para actividad diaria'],
     },
     {
@@ -135,7 +135,7 @@ export class App {
       nombre: 'Mini balón',
       descripcionCorta: 'Tamaño pequeño, ideal para peques.',
       precio: 9.99,
-      urlImagen: '/images/minipelota.jpg',
+      urlImagen: 'images/minipelota.jpg',
       detalles: ['Tamaño mini', 'Ligero', 'Para patio y parque'],
     },
   ];
@@ -148,7 +148,7 @@ export class App {
       descripcionCorta: 'Últimas unidades a mejor precio.',
       precio: 14.99,
       precioOriginal: 24.99,
-      urlImagen: '/images/camisetarebaja.jpg',
+      urlImagen: 'images/camisetarebaja.jpg',
       detalles: ['Unidades limitadas', 'Hasta fin de stock', 'Devolución estándar'],
     },
     {
@@ -158,7 +158,7 @@ export class App {
       descripcionCorta: 'Chollo de temporada, tallas limitadas.',
       precio: 39.99,
       precioOriginal: 69.99,
-      urlImagen: '/images/zapatillasrebaja.jpg',
+      urlImagen: 'images/zapatillasrebaja.jpg',
       detalles: ['Stock limitado', 'Cambio de talla sujeto a disponibilidad', 'Ideal para caminar'],
     },
   ];
